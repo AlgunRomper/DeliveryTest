@@ -18,6 +18,8 @@ struct DishesList: View {
         }
     }
     
+    @State private var uniqueTegs: [String] = []
+    
     @State private var selectedDish: DishesDetail?
     @State private var isShowingAlert = false
     
@@ -35,12 +37,12 @@ struct DishesList: View {
     @State private var selectedDishDetail: DishesDetail?
     
     init(selectedCategory: Binding<FoodsCategory?>) {
-            _selectedCategory = selectedCategory
-            
-            if !uniqueTegs.isEmpty {
-                selectedTeg = uniqueTegs[0]
-            }
-        }
+        _selectedCategory = selectedCategory
+        
+//        if !uniqueTegs.isEmpty {
+//            selectedTeg = uniqueTegs[0]
+//        }
+    }
     
     var body: some View {
         NavigationView {
@@ -90,6 +92,10 @@ struct DishesList: View {
                     .font(.title2)
                     .bold()
             }
+        }
+        .onReceive(dishesModelData.$dishesDetail) { dishesDetail in
+            uniqueTegs = Array(Set(dishesDetail.flatMap { $0.tegs })).sorted(by: <)
+            selectedTeg = uniqueTegs[0]
         }
     }
 }
