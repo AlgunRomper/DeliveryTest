@@ -22,7 +22,6 @@ final class ArrayBusket: ObservableObject {
     
     func subCountOfDish(dish: DishesDetail) {
         if let index = self.arrayBusket.firstIndex(where: { $0.id == dish.id }) {
-//        if let index = self.arrayBusket.firstIndex(where: { $0 == dish }) {
         self.arrayBusket.remove(at: index)
             }
     }

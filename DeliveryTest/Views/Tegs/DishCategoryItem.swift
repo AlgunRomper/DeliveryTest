@@ -26,7 +26,6 @@ struct DishCategoryItem: View {
 }
 
 struct DishCategoryItem_Previews: PreviewProvider {
-
     static var previews: some View {
         DishCategoryItem(teg: uniqueTegs[0], isSelected: true)
     }

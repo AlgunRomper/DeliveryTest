@@ -21,7 +21,6 @@ struct ContentView: View {
     }
     
     var body: some View {
-        
         //кнопки навигации внизу экрана и связь их с другими views
         NavigationView {
             TabView(selection: $selectedTab) {

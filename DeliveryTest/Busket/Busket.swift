@@ -22,11 +22,6 @@ struct Busket: View {
                     NavigationLink(destination: DishDetail(dish: dish)) {
                         BusketRow(arrayBusket: _arrayBusket, dish: dish)
                     }
-//                    NavigationLink {
-//                        DishDetail(dish: dish)
-//                    } label: {
-//                        BusketRow(arrayBusket: _arrayBusket, dish: dish)
-//                    }
                 }
             .foregroundColor(.black)
             Spacer()

@@ -13,16 +13,18 @@ struct FoodsCategoryRow: View {
     
     var body: some View {
         ZStack(alignment: .topLeading) {
-            if let image = foodsCategory.image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-            } else {
-                Color.gray
+            if foodsCategory.image_url != nil {
+                AsyncImage(url: URL(string: foodsCategory.image_url!)) { image in
+                    image.resizable()
+                        .scaledToFill()
+                        .clipped()
+                } placeholder: {
+                    ProgressView()
+                }
             }
             Text(foodsCategory.name)
-                    .font(.title2)
-                    .padding()
+                .font(.title2)
+                .padding()
         }
     }
 }

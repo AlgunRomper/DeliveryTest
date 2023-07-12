@@ -17,6 +17,8 @@ struct DishDetail: View {
         DishesModelData().dishesDetail.firstIndex(where: {$0.id == dish.id})!
     }
     
+    @State private var isSet = false
+    
     @State private var showAlert = false
     
     var body: some View {
@@ -28,7 +30,7 @@ struct DishDetail: View {
                     DishImage(dish: dish)
                         .frame(width: 350, height: 350)
                     //вставляем кнопку для отметки избранного
-                    FavoriteButton(isSet: $dishesModelData.dishesDetail[dishIndex].isFavorite)
+                    FavoriteButton(isSet: $isSet)
                         .padding(10)
                         .offset(x: -10, y: 10)
                 }

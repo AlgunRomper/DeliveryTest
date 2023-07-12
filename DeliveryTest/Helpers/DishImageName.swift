@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct DishImageName: View {
-//    @EnvironmentObject var dishesModelData: DishesModelData
     var dish: DishesDetail
    
     var body: some View {
@@ -18,13 +17,7 @@ struct DishImageName: View {
                 Color(red: 0.9, green: 0.9, blue: 0.9)
                     .cornerRadius(10)
                 
-                if let image = dish.image {
-                    Image(uiImage: image)
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .offset(x: 5, y: 10)
-                }
+            DishImage(dish: dish)
             }
             .frame(width: 110, height: 110)
             

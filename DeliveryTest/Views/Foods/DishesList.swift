@@ -14,13 +14,14 @@ struct DishesList: View {
     
     var dishes: [DishesDetail] {
         dishesModelData.dishesDetail.filter { dish in
-            selectedTeg == uniqueTegs[0] || dish.tegs.contains(selectedTeg) }
+            selectedTeg == uniqueTegs.first || dish.tegs.contains(selectedTeg ?? "Категория не выбрана")
+        }
     }
     
     @State private var selectedDish: DishesDetail?
     @State private var isShowingAlert = false
     
-    @State private var selectedTeg: String = uniqueTegs[0]
+    @State private var selectedTeg: String?
     
     let gridItems = [
         GridItem(.flexible()),
@@ -33,10 +34,18 @@ struct DishesList: View {
     @State private var isShowingDishDetail = false
     @State private var selectedDishDetail: DishesDetail?
     
+    init(selectedCategory: Binding<FoodsCategory?>) {
+            _selectedCategory = selectedCategory
+            
+            if !uniqueTegs.isEmpty {
+                selectedTeg = uniqueTegs[0]
+            }
+        }
+    
     var body: some View {
         NavigationView {
             VStack {
-                //размещаем скролл с тегами
+//                размещаем скролл с тегами
                 HStack {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack(spacing: 10) {
@@ -92,5 +101,6 @@ struct dishesList_Previews: PreviewProvider {
             .environmentObject(ModelData())
             .environmentObject(DishesModelData())
             .environmentObject(ArrayBusket())
+        
     }
 }

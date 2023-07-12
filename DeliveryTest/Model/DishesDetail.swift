@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct DishesDetail: Decodable, Identifiable, Equatable, Hashable {
-    
+
     var id: Int
     var name: String
     var price: Int
@@ -18,9 +18,7 @@ struct DishesDetail: Decodable, Identifiable, Equatable, Hashable {
     var image_url: String?
     var image: UIImage?
     var tegs: [String]
-    var isFavorite: Bool
-    var isInBusket: Bool
-    
+
     private enum CodingKeys: String, CodingKey {
         case id
         case name
@@ -29,7 +27,5 @@ struct DishesDetail: Decodable, Identifiable, Equatable, Hashable {
         case description
         case image_url
         case tegs
-        case isFavorite
-        case isInBusket
     }
 }

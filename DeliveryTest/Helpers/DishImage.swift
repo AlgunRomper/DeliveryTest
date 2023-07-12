@@ -15,13 +15,18 @@ struct DishImage: View {
             Color(red: 0.9, green: 0.9, blue: 0.9)
                 .cornerRadius(10)
             
-            if let image = dish.image {
-                GeometryReader { geometry in
-                    Image(uiImage: image)
-                        .renderingMode(.original)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .position(x: geometry.size.width / 1.8, y: geometry.size.height / 1.75)
+            if dish.image_url != nil {
+               
+                AsyncImage(url: URL(string:dish.image_url!)) { image in
+                    GeometryReader { geometry in
+                        image.resizable()
+                            .scaledToFill()
+                            .clipped()
+                            .position(x: geometry.size.width / 1.8, y: geometry.size.height / 1.75)
+                            .aspectRatio(contentMode: .fit)
+                    }
+                } placeholder: {
+                    ProgressView()
                 }
             }
         }

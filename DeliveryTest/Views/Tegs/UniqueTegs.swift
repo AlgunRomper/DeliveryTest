@@ -11,3 +11,4 @@ import Foundation
 
 var dishes: [DishesDetail] = DishesModelData().dishesDetail
 let uniqueTegs = Array(Set(dishes.flatMap { $0.tegs })).sorted(by: <)
+
